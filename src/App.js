@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import UnitEditor from './components/UnitEditor';
+import UnitListing from './components/UnitListing';
+import './index.css';
 
 function App() {
+  const [currentView, setCurrentView] = useState('listing');
+  const [selectedUnit, setSelectedUnit] = useState(null);
+
+  // Handle navigation to editor when a unit is selected
+  const handleUnitSelect = (unit) => {
+    setSelectedUnit(unit);
+    setCurrentView('editor');
+  };
+
+  // Handle navigation back to listing
+  const handleBackToUnits = () => {
+    setCurrentView('listing');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {currentView === 'listing' ? (
+        <UnitListing onUnitSelect={handleUnitSelect} />
+      ) : (
+        <UnitEditor unit={selectedUnit} onBackClick={handleBackToUnits} />
+      )}
     </div>
   );
 }

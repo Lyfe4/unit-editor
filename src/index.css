@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Additional custom styles can be added here */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +15,104 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* For drag and drop functionality */
+.drag-over {
+  background-color: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.5);
+  border-style: dashed;
+}
+
+/* Editor content styles */
+.editor-content {
+  min-height: 200px;
+}
+
+/* Transition effects */
+.transition-expand {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Placeholder styling */
+.placeholder-text {
+  color: #9ca3af;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Focus styles */
+.focus-visible:focus {
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md;
+}
+
+.btn-secondary {
+  @apply text-blue-600 hover:text-blue-800 px-3 py-1 rounded-md border border-blue-600 hover:bg-blue-50;
+}
+
+/* Tooltip styles */
+.tooltip {
+  @apply invisible absolute;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+  opacity: 1;
+}
+
+/* Animation for saving */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.saving-indicator {
+  animation: pulse 1.5s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar-collapse {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .sidebar-expand {
+    width: 100%;
+    transition: width 0.3s ease-in-out;
+  }
 }
