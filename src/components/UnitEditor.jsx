@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronDown, Plus, Edit, Trash2, Eye, Move, FileText, Upload, Save, Info, AlertTriangle } from 'lucide-react';
+import { ChevronLeft, Plus, Info, } from 'lucide-react';
 import TopicSidebar from './TopicSidebar';
 import TextEditor from './TextEditor';
 
